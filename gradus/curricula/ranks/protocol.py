@@ -55,7 +55,11 @@ class Rank(ABC):
                                             "rank":     self._id_,
                                             "dataset":  self._dataset_id_,
                                             "metric":   self._metric_,
-                                            "seed":     self._seed_
+                                            "seed":     self._seed_,
+                                            "indices":  md5(
+                                                            self._scores_["index"]
+                                                            .to_numpy().tobytes()
+                                                        ).hexdigest(),
                                         }).encode()).hexdigest()
         self._cache_path_:  Path =      self._cache_dir_ / f"{self._cache_key_}.npy"
 
