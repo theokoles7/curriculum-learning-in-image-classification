@@ -46,17 +46,17 @@ class Entry(ABC):
     def config(self) -> Optional[Config]:
         """# Configuration & Argument Handler"""
         return self._config_
-    
+
     @property
     def id(self) -> str:
         """# Entry Identifier"""
         return self._id_
-    
+
     @property
     def tags(self) -> List[str]:
         """# Taxonomical Keywords"""
         return self._tags_
-    
+
     # METHODS ======================================================================================
 
     def has_tag(self,
@@ -75,7 +75,7 @@ class Entry(ABC):
 
         # Query tag.
         return tag in self._tags_
-    
+
     def register_configuration(self,
         subparser:  _SubParsersAction
     ) -> None:

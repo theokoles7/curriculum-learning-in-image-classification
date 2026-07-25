@@ -44,7 +44,7 @@ def plot_metric_distribution_entry_point(
 
     # Load parquet file into data frame.
     metrics:    DataFrame = load_parquet(dataset_id = dataset_id, seed = seed)
-    
+
     # Count metrics & calculate rows needed.
     n:          int =       len(metrics.columns)
     n_rows:     int =       (n + 2) // 3

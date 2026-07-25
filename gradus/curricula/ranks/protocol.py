@@ -90,7 +90,7 @@ class Rank(ABC):
 
         # Compute rank.
         indices:    List[int] = self._rank_()
-        
+
         # Ensure cache directory exists.
         self._cache_dir_.mkdir(parents = True, exist_ok = True)
 
@@ -99,7 +99,7 @@ class Rank(ABC):
 
         # Provide computed. indices.
         return indices
-    
+
     def _load_(self) -> List[int]:
         """# Load Cached Ranked Indices.
 

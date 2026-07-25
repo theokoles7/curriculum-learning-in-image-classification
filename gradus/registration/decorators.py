@@ -51,7 +51,7 @@ def register_command(
 
         # Expose entry point.
         return entry_point
-    
+
     # Expose decorator.
     return decorator
 
@@ -93,7 +93,7 @@ def register_dataset(
 
         # Expose dataset class.
         return cls
-    
+
     # Expose decorator.
     return decorator
 
@@ -135,7 +135,7 @@ def register_metric(
 
         # Expose metric class.
         return cls
-    
+
     # Expose decorator.
     return decorator
 
@@ -177,7 +177,7 @@ def register_network(
 
         # Expose neural network class.
         return cls
-    
+
     # Expose decorator.
     return decorator
 
@@ -216,7 +216,7 @@ def register_rank(
 
         # Expose ranking class.
         return cls
-    
+
     # Expose decorator.
     return decorator
 
@@ -255,6 +255,6 @@ def register_schedule(
 
         # Expose schedule class.
         return cls
-    
+
     # Expose decorator.
     return decorator

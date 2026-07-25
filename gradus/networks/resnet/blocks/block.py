@@ -82,7 +82,7 @@ class ResNetBlock(Module):
         self._bn2_:         BatchNorm2d =       BatchNorm2d(num_features = planes)
         self._relu_:        ReLU =              ReLU(inplace = True)
         self._downsample_:  Optional[Module] =  downsample
-        
+
         # Debug initialization.
         self.__logger__.debug(f"Initialized {self}")
 
@@ -110,7 +110,7 @@ class ResNetBlock(Module):
 
         # Final non-linearity.
         return self._relu_(X_2)
-    
+
     def zero_init(self) -> None:
         """# Initialize Batch Normalization with Zero Weights."""
         # If batch normalization weights are not None...

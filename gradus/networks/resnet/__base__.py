@@ -100,13 +100,13 @@ class ResNet(Network):
                                                         blocks =        layers[3],
                                                         stride =        2
                                                     )
-        
+
         # Initialize weights.
         self._initialize_weights_()
 
         # Initialize blocks' batch normalization layers to zero weights.
         if zero_init_residual: self._zero_init_residual_()
-        
+
     # METHODS ======================================================================================
 
     def forward(self,
@@ -170,7 +170,7 @@ class ResNet(Network):
             # If batch normalization layer...
             elif isinstance(m, BatchNorm2d):
 
-                # Initialize weights to 1 and biases to 0. 
+                # Initialize weights to 1 and biases to 0.
                 constant_(tensor = m.weight, val = 1)
                 constant_(tensor = m.bias,   val = 0)
 
@@ -232,11 +232,11 @@ class ResNet(Network):
 
         # Provide new block layer.
         return Sequential(*layers)
-    
+
     def _zero_init_residual_(self) -> None:
         """# Initialize Residual Branch with Zeros."""
         # For each module in network...
-        for m in self.modules(): 
+        for m in self.modules():
 
             # If block layer
             if isinstance(m, (ResNetBlock, ResNetBottleneck)): m.zero_init()

@@ -132,7 +132,7 @@ def shapiro_label(
                                 5000,
                                 replace = False
                             )
-    
+
     # Test normality.
     stat, p =               stats.shapiro(sample)
 

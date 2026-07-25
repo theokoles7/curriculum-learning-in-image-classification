@@ -26,7 +26,7 @@ class RankRegistry(Registry):
     def entries(self) -> Dict[str, RankEntry]:
         """# Registered Rank Entries"""
         return self._entries_.copy()
-    
+
     # METHODS ======================================================================================
 
     def sort_indices(self,
@@ -59,7 +59,7 @@ class RankRegistry(Registry):
             seed =          seed,
             cache_dir =     cache_dir
         ).indices
-        
+
     # HELPERS ======================================================================================
 
     @override
@@ -70,7 +70,7 @@ class RankRegistry(Registry):
             * RankEntry:    New rank entry instance.
         """
         return RankEntry(**kwargs)
-    
+
     # DUNDERS ======================================================================================
 
     @override

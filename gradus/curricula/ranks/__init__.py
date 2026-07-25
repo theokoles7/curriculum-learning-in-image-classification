@@ -9,7 +9,7 @@ __all__ =   [
 
                 # Concrete
                 "Ascending",
-                "Descending", 
+                "Descending",
                 "DistanceFromMean",
                 "Lexicographic",
                 "NormalizedMean",

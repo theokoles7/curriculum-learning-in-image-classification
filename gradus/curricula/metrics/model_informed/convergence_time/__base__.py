@@ -98,7 +98,7 @@ class TimeToConvergence():
     def loss_history(self) -> List[float]:
         """# Loss Value at Each Iteration"""
         return self._loss_history_
-    
+
     @override
     @cached_property
     def value(self) -> int:

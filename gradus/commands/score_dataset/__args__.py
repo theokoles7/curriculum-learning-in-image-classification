@@ -52,7 +52,7 @@ class ScoreDatasetConfig(CommandConfig):
             default =   ["all"],
             help =      """Metric(s) being calculated for sample."""
         )
-        
+
         parser.add_argument(
             "--output-path",
             dest =      "output_path",

@@ -35,7 +35,7 @@ class Metric(ABC):
     def id(self) -> str:
         """# Metric Identifier"""
         return self._id_
-    
+
     @property
     @abstractmethod
     def value(self) -> Union[int, float]:

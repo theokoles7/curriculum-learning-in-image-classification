@@ -50,7 +50,7 @@ def get_system_core_count() -> int:
 
     # Should any complications arise, default to 1.
     except Exception:   return 1
-    
+
 
 def set_seed(
     seed:   int

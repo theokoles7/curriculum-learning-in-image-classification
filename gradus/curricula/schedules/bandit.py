@@ -86,11 +86,11 @@ class BanditSchedule(Schedule):
         )
 
         # Validate parameters.
-        if num_strata < 2: 
+        if num_strata < 2:
             raise ValueError(f"num_strata must be >= 2; got {num_strata}")
-        # if mode not in ("reoder", "allocate"): 
+        # if mode not in ("reoder", "allocate"):
         #     raise ValueError(f"mode must be reoder or allocate; got {mode}")
-        
+
         # Clamp strata to the number of available batches.
         self._num_strata_:      int =           min(num_strata, self._total_batches_)
         self._mode_:            str =           "reorder"

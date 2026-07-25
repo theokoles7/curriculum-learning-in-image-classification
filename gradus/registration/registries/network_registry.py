@@ -27,7 +27,7 @@ class NetworkRegistry(Registry):
     def entries(self) -> Dict[str, NetworkEntry]:
         """# Registered Neural Network Entries"""
         return self._entries_.copy()
-    
+
     # METHODS ======================================================================================
 
     def load_network(self,
@@ -51,7 +51,7 @@ class NetworkRegistry(Registry):
 
         # Load neural network.
         return entry.cls(*args, **kwargs)
-    
+
     # HELPERS ======================================================================================
 
     @override
@@ -62,7 +62,7 @@ class NetworkRegistry(Registry):
             * NetworkEntry: New neural network entry instance.
         """
         return NetworkEntry(**kwargs)
-    
+
     # DUNDERS ======================================================================================
 
     @override

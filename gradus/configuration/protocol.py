@@ -39,42 +39,42 @@ class Config(ABC):
                                                         prog =          self.parser_id,
                                                         description =   self.parser_help
                                                     )
-            
+
         # Define arguments.
         self._define_arguments_(parser = self._parser_)
-            
+
     # PROPERTIES ===================================================================================
 
     @property
     def parser(self) -> ArgumentParser:
         """# Configuration Argument Parser"""
         return self._parser_
-    
+
     @property
     def parser_help(self) -> str:
         """# Parser Description"""
         return self._parser_help_
-    
+
     @property
     def parser_id(self) -> str:
         """# Parser ID/Program Name"""
         return self._parser_id_
-    
+
     @property
     def subparser_dest(self) -> Optional[str]:
         """# Sub-Parser's Destination"""
         return self.subparser_title.replace("-", "_")
-    
+
     @property
     def subparser_help(self) -> Optional[str]:
         """# Sub-Parser Description"""
         return self._subparser_help_
-    
+
     @property
     def subparser_title(self) -> Optional[str]:
         """# Sub-Parser ID/Title"""
         return self._subparser_title_
-    
+
     # METHODS ======================================================================================
 
     def parse_arguments(self,
@@ -94,7 +94,7 @@ class Config(ABC):
         """
         # Parse known arguments, but provide leftovers for continuity of sub-systems.
         return self._parser_.parse_known_args(args = args, namespace = namespace)
-    
+
     @staticmethod
     def register(
         cls:        "Config",
@@ -120,13 +120,13 @@ class Config(ABC):
                                         help =          config.parser_help,
                                         description =   config.parser_help
                                     )
-            
+
         # Define this configuration's arguments under new parser.
         config._define_arguments_(parser = parser)
 
         # Expose new parser.
         return parser
-    
+
     # HELPERS ======================================================================================
 
     def _create_subparser_(self,
@@ -142,10 +142,10 @@ class Config(ABC):
         """
         # If sub-parser is not configured...
         if self.subparser_title is None:
-            
+
             # Report error.
             raise SubParserNotConfiguredError(parser_id = self.parser_id)
-        
+
         # Create sub-parser.
         return  parser.add_subparsers(
                     title =         self.subparser_title,

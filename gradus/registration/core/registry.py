@@ -40,17 +40,17 @@ class Registry(ABC):
     def entries(self) -> Dict[str, Entry]:
         """# Registered Entries"""
         return self._entries_.copy()
-    
+
     @property
     def id(self) -> str:
         """# Registry Identifier"""
         return self._id_
-    
+
     @property
     def is_loaded(self) -> bool:
         """# Registry is Loaded?"""
         return self._loaded_
-    
+
     # METHODS ======================================================================================
 
     def get_entry(self,
@@ -75,13 +75,13 @@ class Registry(ABC):
 
             # Report error.
             raise EntryNotFoundError(entry_id = entry_id, registry_id = self._id_)
-        
+
         # Debug query.
         self.__logger__.debug(f"Entry queried: {entry_id}")
 
         # Query entry.
         return self._entries_[entry_id]
-    
+
     def list_entries(self,
         filter_by:  List[str] = []
     ) -> List[str]:
@@ -112,7 +112,7 @@ class Registry(ABC):
                             in filter_by
                         )
                 ]
-    
+
     def register(self,
         entry_id:   str,
         **kwargs
@@ -130,7 +130,7 @@ class Registry(ABC):
 
             # Report duplication.
             raise DuplicateEntryError(entry_id = entry_id, registry_id = self._id_)
-        
+
         # Debug registration.
         self.__logger__.debug(f"Registering {entry_id} with arguments: {kwargs}")
 
@@ -189,7 +189,7 @@ class Registry(ABC):
 
             # Warn of complications.
             self.__logger__.warning(f"Error importing package gradus.{self._id_}: {e}"); return
-        
+
         # Debug action.
         self.__logger__.debug(f"Walking package: {package}")
 
@@ -242,7 +242,7 @@ class Registry(ABC):
             * bool: True if entry is registered.
         """
         return entry_id in self._entries_
-    
+
     def __getitem__(self,
         entry_id:   str
     ) -> Entry:
@@ -258,11 +258,11 @@ class Registry(ABC):
             * Entry:    Queried entry, if registered.
         """
         return self.get_entry(entry_id = entry_id)
-    
+
     def __len__(self) -> int:
         """# Quantity of Registered Entries"""
         return len(self._entries_)
-    
+
     def __repr__(self) -> str:
         """# Registry System Object Representation"""
         return f"""<{self._id_.capitalize()}Registry({len(self._entries_)} entries)>"""

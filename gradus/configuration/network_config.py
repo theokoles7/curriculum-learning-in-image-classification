@@ -45,13 +45,13 @@ class NetworkConfig(Config):
         from argparse               import _ArgumentGroup, _SubParsersAction
 
         from gradus.registration    import DATASET_REGISTRY
-        
+
         # ARTIFACTS --------------------------------------------------------------------------------
         artifacts:  _ArgumentGroup =    parser.add_argument_group(
                                             title =         "Artifacts",
                                             description =   """Artifact management."""
                                         )
-        
+
         artifacts.add_argument(
             "--weights-path",
             dest =      "weights_path",

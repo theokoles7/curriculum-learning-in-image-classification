@@ -75,7 +75,7 @@ class TimeToSaturation():
         self._loss_history_:            List[float] =               []
         self._weight_delta_history_:    Dict[str, List[float]] =    {
                                                                         name: []
-                                                                        for name 
+                                                                        for name
                                                                         in self._learnable_layers_
                                                                     }
         self._stable_counts_:           Dict[str, int] =            {
@@ -93,7 +93,7 @@ class TimeToSaturation():
                                                                         for name
                                                                         in self._learnable_layers_
                                                                     }
-        
+
         # Calculate metric.
         self._calculate_()
 
@@ -108,33 +108,33 @@ class TimeToSaturation():
     def iterations(self) -> int:
         """# Number of Iterations Executed"""
         return self._iteration_
-    
+
     @property
     def layer_saturation_iters(self) -> Dict[str, int]:
         """Iteration at which Each Layer First Saturated"""
         return self._layer_saturation_iters_
-    
+
     @property
     def learnable_layer_names(self) -> List[str]:
         """# Names of Discovered Learnable Layers"""
         return list(self._learnable_layers_.keys())
-    
+
     @property
     def loss_history(self) -> List[float]:
         """# Loss Value at Each Iteration"""
         return self._loss_history_
-    
+
     @property
     def saturated(self) -> bool:
         """# Are All Layers Saturated?"""
         return self._saturated_
-    
+
     @override
     @cached_property
     def value(self) -> int:
         """# Number of Iterations Executed"""
         return self.iterations
-    
+
     @property
     def weight_delta_history(self) -> Dict[str, List[float]]:
         """# Layer-Wise Weight Delta at Each Iteration"""
@@ -153,7 +153,7 @@ class TimeToSaturation():
 
         # Prepare single-sample batch.
         sample_batch:   Tensor =            self._sample_.unsqueeze(0).to(self._device_)
-        
+
         # Take note of initial model weights.
         prev_weights:   Dict[str, Tensor] = self._snapshot_weights_()
 
@@ -177,7 +177,7 @@ class TimeToSaturation():
             deltas:         Dict[str, float] =  self._compute_weight_delta_(
                                                     prev_weights = prev_weights
                                                 )
-            
+
             # Compute layer-wise stabilization.
             self._compute_layer_stability_(deltas = deltas)
 
@@ -213,11 +213,11 @@ class TimeToSaturation():
                     # If layer has reached complete saturation (according to window)...
                     if self._stable_counts_[layer] >= self._window_:
 
-                        # Mark layer as completely saturated & record iteration at which 
+                        # Mark layer as completely saturated & record iteration at which
                         # stabilization began.
                         self._layer_saturated_[layer] =         True
                         self._layer_saturation_iters_[layer] =  self._iteration_ - self._window_ + 1
-                
+
                 # Otherwise, reset stable iteration count for this layer.
                 else:   self._stable_counts_[layer] = 0
 

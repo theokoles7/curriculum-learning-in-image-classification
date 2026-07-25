@@ -52,7 +52,7 @@ def analyze_scores_entry_point(
         if input(
             "Metric scores not yet calculated. Commence dataset scoring now? [Y/n] "
         ).strip().lower() not in ["n", "no"]:
-            
+
             # Import process.
             from gradus.commands.score_dataset  import score_dataset
 
@@ -64,16 +64,16 @@ def analyze_scores_entry_point(
 
     # Read metric scores into DataFrame.
     metric_scores:  DataFrame = read_csv(scores_path)
-    
+
     # Get list of unique classes.
     classes:        Set[str] =  metric_scores["class"].unique()
-    
+
     # For each metric discovered in file...
     for metric in [m for m in metric_scores.columns if m not in {"index", "class"}]:
 
         # Initialize dataframe rows.
         rows:   List[Dict[str, Any]] =  []
-    
+
         # Extract metric series.
         series: Series =                metric_scores[metric]
 

@@ -25,7 +25,7 @@ class MetricRegistry(Registry):
     def entries(self) -> Dict[str, MetricEntry]:
         """# Registered Metric Entries"""
         return self._entries_.copy()
-    
+
     # METHODS ======================================================================================
 
     def compute(self,
@@ -42,7 +42,7 @@ class MetricRegistry(Registry):
             * Any:  Result of metric computation.
         """
         return self.get_entry(entry_id = metric_id).cls(sample).value
-    
+
     def compute_all(self,
         sample:     Tensor,
         filter_by:  List[str] = []
@@ -60,7 +60,7 @@ class MetricRegistry(Registry):
                     metric_id: self.get_entry(entry_id = metric_id).cls(sample).value
                     for metric_id in self.list_entries(filter_by = filter_by)
                 }
-    
+
     # HELPERS ======================================================================================
 
     @override

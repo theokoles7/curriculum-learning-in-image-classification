@@ -87,14 +87,14 @@ def train_entry_point(
                                             num_classes =   dataset.num_classes,
                                             **kwargs
                                         ).to(device)
-    
+
     # Determine if this training is using adaptive scheduling.
     adaptive:       bool =              (
                                             dataset.schedule is not None and
                                             dataset.schedule.id in  SCHEDULE_REGISTRY.list_entries(
                                                                         filter_by = ["adaptive"]
                                                                     )
-                                            
+
                                         )
 
     # Initialize optimizer.
@@ -110,7 +110,7 @@ def train_entry_point(
                                             optimizer =     optimizer,
                                             T_max =         epochs
                                             )
-    
+
     # Initialize training data map.
     train_record:   TrainingRecord =    TrainingRecord(
                                             network_config =    network.dict,
@@ -123,7 +123,7 @@ def train_entry_point(
                                             cache_path =        cache_path,
                                             max_batches =       len(dataset.train_loader)
                                         )
-    
+
     # If training record already exists...
     if train_record.already_exists:
 
@@ -202,18 +202,18 @@ def train_entry_point(
                     # Compute mean activation standard deviation across all layers.
                     mean_std:       float =         sum(act.std().item() for act in activations)    \
                                                     / len(activations)
-                    
+
                     # Compute gradient L2 norm across all layers wih gradients.
                     grad_norms:     List[float] =   [
                                                         p.grad.data.norm(2).item()
                                                         for p in network.parameters()
                                                         if p.grad is not None
                                                     ]
-                    
+
                     # Compute mean of L2 norm.
                     mean_grad_norm: float =         sum(grad_norms) / len(grad_norms) \
                                                     if grad_norms else 0.0
-                    
+
                     # Accumulate records.
                     batch_std_rows.append( {"batch_idx": b, "mean_std":       mean_std})
                     batch_grad_norm.append({"batch_idx": b, "mean_grad_norm": mean_grad_norm})
@@ -250,7 +250,7 @@ def train_entry_point(
         train_loss:     float = round(train_total_loss / len(dataset.train_loader), 4)
         val_accuracy:   float = round(val_correct / val_total,                      4)
         val_loss:       float = round(val_total_loss / len(dataset.test_loader),    4)
-            
+
         # Record epoch results.
         train_record.record_epoch(
             epoch =             epoch,

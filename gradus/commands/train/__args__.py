@@ -34,7 +34,7 @@ class TrainConfig(CommandConfig):
         """
         from argparse               import _SubParsersAction
         from gradus.registration    import NETWORK_REGISTRY
-        
+
         parser.add_argument(
             "--epochs",
             dest =      "epochs",

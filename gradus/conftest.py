@@ -26,7 +26,7 @@ def synthetic_scores() -> DataFrame:
     """
     # Construct default random number generator.
     rng:    Generator = default_rng(seed = 1)
- 
+
     # Define number of samples.
     n:      int =       20
 
@@ -39,8 +39,8 @@ def synthetic_scores() -> DataFrame:
                 "edge-density":         rng.uniform(0.0,   0.5, n),
                 "spatial-frequency":    rng.uniform(0.0,   0.3, n),
             })
- 
- 
+
+
 @fixture(scope = "session")
 def synthetic_scores_path(
     tmp_path_factory:   TempPathFactory,
@@ -52,16 +52,16 @@ def synthetic_scores_path(
     for tests that exercise the full DatasetMetrics → Rank pipeline.
     """
     from pathlib    import Path
- 
+
     # Resolve scores path.
     path:   Path =  tmp_path_factory.mktemp("scores") / "test-dataset" / "metric-scores_seed-1.parquet"
-    
+
     # Ensure path exists.
     path.parent.mkdir(parents = True, exist_ok = True)
 
     # Save to file.
     synthetic_scores.to_parquet(path, index = False)
- 
+
     # Provide path to scores.
     return path.parent.parent
 

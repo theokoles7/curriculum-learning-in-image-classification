@@ -55,14 +55,14 @@ class EdgeDensity():
         from numpy import count_nonzero
 
         return int(count_nonzero(self.edges))
-    
+
     @cached_property
     def edges(self) -> NDArray:
         """# Image Edge Detection"""
         from cv2 import Canny
 
         return Canny(self.normalized_image, self._low_, self._high_)
-    
+
     @cached_property
     def normalized_image(self) -> NDArray:
         """# Sample Normalized to NDArray"""
@@ -89,12 +89,12 @@ class EdgeDensity():
 
         # Convert values to uint8.
         return image.astype(uint8)
-    
+
     @cached_property
     def total_pixels(self) -> int:
         """# Total Number of Pixels in Image"""
         return self.edges.size
-    
+
     @override
     @cached_property
     def value(self) -> float:

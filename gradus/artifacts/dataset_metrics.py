@@ -63,27 +63,27 @@ class DatasetMetrics():
     def dataset_id(self) -> str:
         """# Dataset Identifier"""
         return self._dataset_id_
-    
+
     @property
     def metrics(self) -> List[str]:
         """# Metric Identifiers in Loaded Scores"""
         return [m for m in self._scores_.columns if m not in self._META_COLUMNS_]
-    
+
     @property
     def scores(self) -> DataFrame:
         """# Loaded Scores DataFrame"""
         return self._scores_
-    
+
     @property
     def scores_path(self) -> Path:
         """# Absolute Path to Score Files"""
         return self._root_ / f"metric-scores_seed-{self._seed_}.parquet"
-    
+
     @property
     def seed(self) -> int:
         """# Seed Used When Scores Were Computed"""
         return self._seed_
-    
+
     # METHODS ======================================================================================
 
     def get(self,
@@ -110,7 +110,7 @@ class DatasetMetrics():
 
         # Provide queried score.
         return row.iloc[0]
-    
+
     def get_unscored(self,
         metric: str
     ) -> List[int]:
@@ -127,7 +127,7 @@ class DatasetMetrics():
 
         # Otherwise, return indices where the value is NaN or empty.
         return set(self._scores_.loc[self._scores_[metric].isna(), "index"].tolist())
-    
+
     def record_row(self,
         index:  int,
         label:  str,
@@ -148,7 +148,7 @@ class DatasetMetrics():
 
         # Record metric scores.
         for m, s in scores.items(): self._scores_.loc[mask, m] = s
-    
+
     def record_score(self,
         index:  int,
         metric: str,

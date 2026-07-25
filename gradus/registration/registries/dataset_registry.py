@@ -25,7 +25,7 @@ class DatasetRegistry(Registry):
     def entries(self) -> Dict[str, DatasetEntry]:
         """# Registered Dataset Entries"""
         return self._entries_.copy()
-    
+
     # METHODS ======================================================================================
 
     def load_dataset(self,
@@ -49,7 +49,7 @@ class DatasetRegistry(Registry):
 
         # Load dataset.
         return entry.cls(*args, **kwargs)
-    
+
     # HELPERS ======================================================================================
 
     @override

@@ -48,7 +48,7 @@ class Network(Module, ABC):
     def id(self) -> str:
         """# Network Identifier"""
         return self._id_
-    
+
     # METHODS ======================================================================================
 
     def load_weights(self,
@@ -66,7 +66,7 @@ class Network(Module, ABC):
 
         # Debug action.
         self.__logger__.debug(f"Weights loaded from {path}")
-    
+
     def save_weights(self,
         path:   Union[str, Path]
     ) -> Path:
@@ -94,7 +94,7 @@ class Network(Module, ABC):
 
         # Provide path at which weights were saved.
         return weights_file
-    
+
     # DUNDERS ======================================================================================
 
     def __repr__(self) -> str:

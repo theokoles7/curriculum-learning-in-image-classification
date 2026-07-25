@@ -52,7 +52,7 @@ class DatasetConfig(Config):
                                             description =   """General dataset configuration 
                                                             parameters."""
                                         )
-        
+
         general.add_argument(
             "--root",
             dest =      "root",
@@ -92,7 +92,7 @@ class DatasetConfig(Config):
                                             title =         "Curriculum",
                                             description =   """Curriculum design & configuration."""
                                         )
-        
+
         curriculum.add_argument(
             "--metric",
             dest =      "metric",

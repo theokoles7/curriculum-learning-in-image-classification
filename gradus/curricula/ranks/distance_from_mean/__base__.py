@@ -67,7 +67,7 @@ class DistanceFromMean(Rank):
         """
         # Compute mean score value.
         mean: float = self._scores_[self._metric_[0]].mean()
-    
+
         # Provide indices in order of absolute distance from the calculated mean.
         return  self._scores_.assign(distance = (self._scores_[self._metric_[0]] - mean).abs()) \
                 .sort_values("distance")["index"].tolist()

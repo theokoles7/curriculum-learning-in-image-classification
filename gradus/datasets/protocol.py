@@ -84,12 +84,12 @@ class Dataset(ABC):
     def channels(self) -> int:
         """# Input Channels"""
         return self.input_shape[0]
-    
+
     @cached_property
     def classes(self) -> List[str]:
         """# Classification Classes"""
         return self._train_data_.classes
-    
+
     @cached_property
     def curriculum(self) -> Optional[Curriculum]:
         """# Dataset Curriculum"""
@@ -111,10 +111,10 @@ class Dataset(ABC):
                                                 batch_size =    self._batch_size_,
                                                 seed =          self._seed_
                                             )
-        
+
         # Provide curriculum.
         return self._curriculum_
-    
+
     @property
     def dict(self) -> Dict[str, Any]:
         """# Dataset Dictionary Representation"""
@@ -127,12 +127,12 @@ class Dataset(ABC):
                     "schedule_id":          self._schedule_id_,
                     "start_fraction":       self._start_fraction_
                 }
-    
+
     @cached_property
     def height(self) -> int:
         """# Input Height"""
         return self.input_shape[1]
-    
+
     @property
     def id(self) -> str:
         """# Dataset Identifier"""
@@ -142,12 +142,12 @@ class Dataset(ABC):
     def input_shape(self) -> Tuple[int, int, int]:
         """# Expected Input Shape (C, H, W)"""
         return tuple(self._train_data_[0][0].shape)
-    
+
     @cached_property
     def num_classes(self) -> int:
         """# Number of Classes"""
         return len(self.classes)
-    
+
     @cached_property
     def schedule(self) -> Optional[Schedule]:
         """# Curriculum Pacing Schedule"""
@@ -165,22 +165,22 @@ class Dataset(ABC):
                     start_fraction =    self._start_fraction_,
                     batch_size =        self._batch_size_
                 )
-    
+
     @property
     def shuffled(self) -> bool:
         """# Training Data is Shuffled?"""
         return self._shuffle_
-    
+
     @cached_property
     def size(self) -> int:
         """# Sample Quantity"""
         return len(self._train_data_) + len(self._test_data_)
-    
+
     @property
     def test_data(self) -> t_Dataset:
         """# Test Split Data"""
         return self._test_data_
-    
+
     @cached_property
     def test_loader(self) -> DataLoader:
         """# Test Split Loader"""
@@ -192,12 +192,12 @@ class Dataset(ABC):
                     shuffle =       False,
                     drop_last =     False
                 )
-    
+
     @property
     def train_data(self) -> t_Dataset:
         """# Train Split Data"""
         return self._train_data_
-    
+
     @cached_property
     def train_loader(self) -> DataLoader:
         """# Train Split Loader"""
@@ -213,7 +213,7 @@ class Dataset(ABC):
                         pin_memory =    True,
                         drop_last =     False
                     )
-        
+
         # Otherwise, initialize data loader with curriculum.
         return  DataLoader(
                     dataset =       self._train_data_,
@@ -221,14 +221,14 @@ class Dataset(ABC):
                     num_workers =   self._max_workers_,
                     pin_memory =    True
                 )
-    
+
     @cached_property
     def width(self) -> int:
         """# Input Width"""
         return self.input_shape[2]
-    
+
     # METHODS ======================================================================================
- 
+
     def step(self,
         epoch:      int,
         **metrics:  Any
@@ -241,7 +241,7 @@ class Dataset(ABC):
 
         # Apply ordering to curriculum.
         self.curriculum.set_order(order)
-    
+
     # DUNDERS ======================================================================================
 
     def __repr__(self) -> str:

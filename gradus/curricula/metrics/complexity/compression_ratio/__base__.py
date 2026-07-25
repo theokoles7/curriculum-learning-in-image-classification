@@ -55,7 +55,7 @@ class CompressionRatio():
 
         # Provide size of encoded image.
         return len(encoded)
-    
+
     @cached_property
     def normalized_image(self) -> NDArray:
         """# Sample Normalized to NDArray"""
@@ -73,17 +73,17 @@ class CompressionRatio():
 
         # Convert values to uint8.
         return image.astype(uint8)
-    
+
     @cached_property
     def original_size(self) -> int:
         """# Size of Original Image (Bytes)"""
         return self.normalized_image.nbytes
-    
+
     @cached_property
     def ratio(self) -> float:
         """# Compression Ratio (Original / Compressed)"""
         return self.original_size / self.compressed_size
-    
+
     @override
     @cached_property
     def value(self) -> float:

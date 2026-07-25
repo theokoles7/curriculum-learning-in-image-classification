@@ -64,7 +64,7 @@ class TrainingRecord():
                                                                             parents =   True,
                                                                             exist_ok =  True
                                                                         )
-        
+
 
         # Debug initialization.
         self.__logger__.debug(f"Initialized {self}")
@@ -93,7 +93,7 @@ class TrainingRecord():
     def batches_per_epoch(self) -> List[Optional[int]]:
         """# Batches Processed at Each Recorded Epoch"""
         return [e["batches"] for e in self._epochs_.values()]
-        
+
     @property
     def best_accuracy(self) -> float:
         """# Validation Accuracy at Best Epoch"""
@@ -106,12 +106,12 @@ class TrainingRecord():
                     self._epochs_,
                     key =   lambda epoch: self._epochs_[epoch]["validation"]["accuracy"]
                 )
-    
+
     @property
     def best_loss(self) -> float:
         """# Validation Loss at Best Epoch"""
         return self._epochs_[self.best_epoch]["validation"]["loss"]
-    
+
     @property
     def config(self) -> Dict[str, Any]:
         """# Training Process Configuration Metadata"""
@@ -123,7 +123,7 @@ class TrainingRecord():
                     "device":       str(self._device_),
                     "num_epochs":   self._num_epochs_,
                 }
-    
+
     @property
     def dsi(self) -> Optional[float]:
         """# Data Saturation Index
@@ -147,17 +147,17 @@ class TrainingRecord():
 
         # Compute DSI: fraction of dataset processed, summed across epochs.
         return round(1.0 - (processed / (self._max_batches_ * self._num_epochs_)), 4)
-    
+
     @property
     def final_accuracy(self) -> float:
         """# Validation Accuracy at Last Recorded Epoch"""
         return self.validation_accuracies[-1]
-    
+
     @property
     def final_loss(self) -> float:
         """# Validation Loss at Last Recorded Epoch"""
         return self.validation_losses[-1]
-    
+
     @cached_property
     def hash(self) -> str:
         """# Unique Hash of Training Variables"""
@@ -172,7 +172,7 @@ class TrainingRecord():
                     "device":   str(self._device_),
                     "seed":     self._seed_
                 }, sort_keys = True).encode()).hexdigest()
-    
+
     @property
     def master_record_path(self) -> Path:
         """# Master Record File Path"""
@@ -187,7 +187,7 @@ class TrainingRecord():
     def num_epochs(self) -> int:
         """# Quantity of Epochs Recorded"""
         return len(self._epochs_)
-    
+
     @property
     def record_path(self) -> Path:
         """# Path at Which Training Record is Located"""
@@ -196,7 +196,7 @@ class TrainingRecord():
                     f"""{self._network_config_["id"]}_{self._dataset_config_["id"]}"""  /
                     f"{self.hash}.json"
                 )
-    
+
     @property
     def results(self) -> Dict[str, Any]:
         """# Current Training Results"""
@@ -217,22 +217,22 @@ class TrainingRecord():
     def train_accuracies(self) -> List[float]:
         """# Train Accuracy Sequence"""
         return [e["train"]["accuracy"] for e in self._epochs_.values()]
-    
+
     @property
     def train_losses(self) -> List[float]:
         """# Train Loss Sequence"""
         return [e["train"]["loss"] for e in self._epochs_.values()]
-    
+
     @property
     def validation_accuracies(self) -> List[float]:
         """# Validation Accuracy Sequence"""
         return [e["validation"]["accuracy"] for e in self._epochs_.values()]
-    
+
     @property
     def validation_losses(self) -> List[float]:
         """# Validation Loss Sequence"""
         return [e["validation"]["loss"] for e in self._epochs_.values()]
-    
+
     @property
     def weights_path(self) -> Path:
         """# Path at Which Network Weights Will be Stored"""
@@ -270,7 +270,7 @@ class TrainingRecord():
                                                     },
                                     "batches":      batches
                                 }
-        
+
         # Debug record.
         self.__logger__.debug(f"Recorded Epoch {epoch}: {self._epochs_[epoch]}")
 
@@ -281,7 +281,7 @@ class TrainingRecord():
 
         # Save verbose record.
         self._save_verbose_record_()
-        
+
     def to_dict(self) -> Dict[str, Any]:
         """# Dictionary Representation of Training Record.
 
@@ -305,7 +305,7 @@ class TrainingRecord():
                     "batches_per_epoch":        self.batches_per_epoch,
                     "epochs":                   self._epochs_,
                 }
-    
+
     # HELPERS ======================================================================================
 
     def _save_to_master_record_(self) -> None:
@@ -321,16 +321,16 @@ class TrainingRecord():
                                 "max_batches_per_epoch", "total_batches_processed",
                                 "record_file", "hash"
                             ]
-        
+
         # If master record does not exist, or is empty...
         if not self.master_record_path.exists() or self.master_record_path.stat().st_size == 0:
-    
+
             # Open file for writing.
             with open(self.master_record_path, "w", newline = "") as master_record:
 
                 # Write header.
                 DictWriter(master_record, fieldnames = FIELDS).writeheader()
-    
+
         # Open file for writing.
         with open(self.master_record_path, "a", newline = "") as master_record:
 
@@ -391,7 +391,7 @@ class TrainingRecord():
 
         # Communicate verbose record path.
         self.__logger__.info(f"""Verbose record saved to {self.record_path.absolute()}""")
-        
+
     # DUNDERS ======================================================================================
 
     def __repr__(self) -> str:

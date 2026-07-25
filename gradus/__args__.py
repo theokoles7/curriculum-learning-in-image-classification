@@ -31,7 +31,7 @@ def parse_gradus_arguments(
                                                         curriculum learning in image classification 
                                                         tasks."""
                                     )
-    
+
     # Initialize sub-parser.
     subparser:  _SubParsersAction = parser.add_subparsers(
                                         title =         "gradus-command",
@@ -39,7 +39,7 @@ def parse_gradus_arguments(
                                         help =          """Gradus command being executed.""",
                                         description =   """Gradus command being executed."""
                                     )
-    
+
     # +============================================================================================+
     # | BEGIN ARGUMENTS                                                                            |
     # +============================================================================================+
@@ -75,7 +75,7 @@ def parse_gradus_arguments(
         const =     "DEBUG",
         help =      """Set logging level to DEBUG."""
     )
-    
+
     # +============================================================================================+
     # | END ARGUMENTS                                                                              |
     # +============================================================================================+

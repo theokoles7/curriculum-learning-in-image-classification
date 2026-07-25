@@ -273,7 +273,7 @@ class TestNormalizedMeanOrder:
                                     ["normal-metric", "inverted-metric"],
                                     inverted = []
                                 )
-        
+
         # Ensure mirrored metrics produce flat composite.
         assert flat.nunique() == 1, \
             "Without inversion, mirrored metrics should produce a flat composite."
@@ -285,7 +285,7 @@ class TestNormalizedMeanOrder:
                                     ["normal-metric", "inverted-metric"],
                                     inverted = ["inverted-metric"]
                                 )
-        
+
         for pos in range(len(ordered) - 1):
             assert  ordered.iloc[pos] <= ordered.iloc[pos + 1] + 1e-9, \
                     f"With inversion, composite should be non-decreasing at position {pos}."

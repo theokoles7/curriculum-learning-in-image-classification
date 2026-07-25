@@ -119,7 +119,7 @@ class TestAscendingOrder:
 
         # Look up metric value for each ranked index in order.
         values: List[float] =   [
-                                    synthetic_scores.set_index("index")["saturation-time"][i] 
+                                    synthetic_scores.set_index("index")["saturation-time"][i]
                                     for i in indices
                                 ]
 
@@ -183,7 +183,7 @@ class TestAscendingOrder:
         """Ordering should respect whichever metric is specified as anchor."""
         # For each metric...
         for metric in ["saturation-time", "color-variance", "edge-density"]:
-            
+
             # Load indices.
             indices:    List[int] = ascending_indices(synthetic_scores, metric, tmp_path)
 

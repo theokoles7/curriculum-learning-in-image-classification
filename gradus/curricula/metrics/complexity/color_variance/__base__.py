@@ -32,7 +32,7 @@ class ColorVariance():
             * device    (str | device): Torch computation device. Defaults to "auto".
         """
         from gradus.utilities   import determine_device
-        
+
         # Define properties.
         self._device_:  t_device =  determine_device(device)
         self._sample_:  Tensor =    sample.to(self._device_)
@@ -47,12 +47,12 @@ class ColorVariance():
 
         # Otherwise, calculate variance of each channel (RGB).
         return [self._sample_[c].var().item() for c in range(self._sample_.shape[0])]
-    
+
     @cached_property
     def mean_variance(self) -> float:
         """# Mean of Channel-Wise Variances"""
         return sum(self.channel_variances) / len(self.channel_variances)
-    
+
     @override
     @cached_property
     def value(self) -> float:

@@ -117,6 +117,5 @@ class CIFAR_10(Dataset):
             normalize_classes = normalize_classes,
             seed =              seed
         )
-        
-        
-        
+
+

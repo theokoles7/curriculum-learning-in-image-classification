@@ -62,7 +62,7 @@ class WaveletEnergy():
 
         # Convert to NDArray.
         return image.detach().cpu().numpy()
-    
+
     @cached_property
     def level_energies(self) -> List[float]:
         """# Level-Wise Wavelet Energies"""
@@ -72,7 +72,7 @@ class WaveletEnergy():
                     sum(float(np_sum(d ** 2)) for d in detail_coeffs)
                     for detail_coeffs in self.coefficients[1:]
                 ]
-    
+
     @cached_property
     def total_energy(self) -> float:
         """# Sample's Total Wavelet Energy"""
@@ -81,7 +81,7 @@ class WaveletEnergy():
 
         # Provide total energy.
         return 0.0 if energy < 1e-6 else energy
-    
+
     @override
     @cached_property
     def value(self) -> float:

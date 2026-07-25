@@ -28,7 +28,7 @@ def gradus_entry_point(*args, **kwargs) -> Any:
                                 logging_level = arguments.logging_level,
                                 logging_path =  arguments.logging_path
                             )
-    
+
     # Debug arguments.
     logger.debug(f"Gradus arguments: {vars(arguments)}")
 

@@ -51,7 +51,7 @@ class WaveletEntropy():
         from pywt import wavedec2
 
         return wavedec2(self.image, wavelet = self._wavelet_, level = self._level_)
-    
+
     @cached_property
     def energy_distribution(self) -> List[float]:
         """# Level-Wise Energy Distribution"""
@@ -60,7 +60,7 @@ class WaveletEntropy():
 
         # Otherwise, normalized distribution.
         return [e / self.total_energy for e in self.level_energies]
-    
+
     @cached_property
     def entropy(self) -> float:
         """# Shannon Entropy of Calculated Energies"""
@@ -81,7 +81,7 @@ class WaveletEntropy():
 
         # Convert to NDArray.
         return image.detach().cpu().numpy()
-    
+
     @cached_property
     def level_energies(self) -> List[float]:
         """# Level-Wise Wavelet Energies"""
@@ -91,7 +91,7 @@ class WaveletEntropy():
                     sum(float(np_sum(d ** 2)) for d in detail_coeffs)
                     for detail_coeffs in self.coefficients[1:]
                 ]
-    
+
     @cached_property
     def normalized_entropy(self) -> float:
         """# Entropy Normalized by Maximum"""
@@ -100,12 +100,12 @@ class WaveletEntropy():
 
         # Calculate normalized entropy.
         return self.entropy / max_entropy if max_entropy > 0 else 0.0
-    
+
     @cached_property
     def total_energy(self) -> float:
         """# Sample's Total Wavelet Energy"""
         return sum(self.level_energies)
-    
+
     @override
     @cached_property
     def value(self) -> float:

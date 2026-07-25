@@ -44,14 +44,14 @@ class ObjectCount():
         self._high_:    int =       high
 
     # PROPERTIES ===================================================================================
-    
+
     @cached_property
     def edges(self) -> NDArray:
         """# Image Edge Detection"""
         from cv2 import Canny
 
         return Canny(self.normalized_image, self._low_, self._high_)
-    
+
     @cached_property
     def edges_dilated(self) -> NDArray:
         """"""
@@ -63,7 +63,7 @@ class ObjectCount():
 
         # Dilate edges.
         return dilate(src = self.edges, kernel = kernel, iterations = 1)
-    
+
     @cached_property
     def normalized_image(self) -> NDArray:
         """# Sample Normalized to NDArray"""
@@ -90,7 +90,7 @@ class ObjectCount():
 
         # Convert values to uint8.
         return image.astype(uint8)
-    
+
     @cached_property
     def num_labels(self) -> int:
         """# Number of Objects within Image"""
@@ -101,7 +101,7 @@ class ObjectCount():
 
         # Subtract 1 for background.
         return max(labels - 1, 0)
-    
+
     @override
     @cached_property
     def value(self) -> int:

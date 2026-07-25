@@ -32,7 +32,7 @@ class DuplicateEntryError(RegistrationError):
     
     Raised when attempting to register an entry that already exists.
     """
-    
+
     def __init__(self,
         entry_id:       str,
         registry_id:    str
@@ -53,7 +53,7 @@ class EntryNotFoundError(RegistrationError):
     
     Raised when attempting to access an entry that is not registered.
     """
-    
+
     def __init__(self,
         entry_id:       str,
         registry_id:    str
@@ -67,14 +67,14 @@ class EntryNotFoundError(RegistrationError):
         super(EntryNotFoundError, self).__init__(
             f"""Entry "{entry_id}" not registered in {registry_id} registry"""
         )
-        
-        
+
+
 class EntryPointNotConfiguredError(RegistrationError):
     """# Entry Point Not Configured Error.
     
     Raised when attempting to dispatch to an entry that has no entry point configured.
     """
-    
+
     def __init__(self,
         entry_id:   str
     ):
@@ -86,15 +86,15 @@ class EntryPointNotConfiguredError(RegistrationError):
         super(EntryPointNotConfiguredError, self).__init__(
             f"""Entry "{entry_id}" was not registered with an entry point"""
         )
-        
-        
+
+
 class ParserNotConfiguredError(RegistrationError):
     """# Parser Not Configured Error.
     
     Raised when attempting to register arguments for an entry who was not configured with a parser 
     handler.
     """
-    
+
     def __init__(self,
         entry_id:   str
     ):
@@ -106,14 +106,14 @@ class ParserNotConfiguredError(RegistrationError):
         super(ParserNotConfiguredError, self).__init__(
             f"""Entry "{entry_id}" was not registered with an argument parser handler"""
         )
-        
+
 
 class RegistryNotLoadedError(RegistrationError):
     """# Registry Not Loaded Error.
     
     Raised when attempting to access a registry whose modules have not been loaded yet.
     """
-    
+
     def __init__(self,
         registry_id:    str
     ):

@@ -70,7 +70,7 @@ class Autoencoder(Module):
                                                 padding =           1,
                                                 output_padding =    1
                                             )
-        
+
         # Define batch normalization layers.
         self._bn_1_:    BatchNorm2d =       BatchNorm2d(num_features =  32)
         self._bn_2_:    BatchNorm2d =       BatchNorm2d(num_features =  64)

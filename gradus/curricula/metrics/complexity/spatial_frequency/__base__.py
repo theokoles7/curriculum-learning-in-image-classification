@@ -46,7 +46,7 @@ class SpatialFrequency():
 
         # Calculate root mean squared of difference.
         return (col_diff ** 2).mean().item() ** 0.5
-    
+
     @cached_property
     def frequency(self) -> float:
         """# Total Spatial Frequency of Image"""
@@ -65,7 +65,7 @@ class SpatialFrequency():
 
         # Convert to float for precision.
         return image.float()
-    
+
     @cached_property
     def row_frequency(self) -> float:
         """# RMS of Horizontal Differences"""
@@ -74,7 +74,7 @@ class SpatialFrequency():
 
         # Calculate root mean squared of difference.
         return (row_diff ** 2).mean().item() ** 0.5
-    
+
     @override
     @cached_property
     def value(self) -> float:

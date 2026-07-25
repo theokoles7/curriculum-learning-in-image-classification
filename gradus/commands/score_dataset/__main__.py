@@ -89,10 +89,10 @@ def score_dataset_entry_point(
                                             metric_id:  scores.get_unscored(metric_id)
                                             for metric_id in scheduled
                                         }
-    
+
     # If all scores have already been computed...
     if not any(unscored.values()):
-        
+
         # Log condition & exit.
         logger.info(f"{dataset_id}, seed {seed} already scored"); return scores.scores_path
 
@@ -104,21 +104,21 @@ def score_dataset_entry_point(
             range(len(dataset.train_data)),
             desc =  f"Scoring {dataset_id.upper()}",
             unit =  "sample(s)"
-        ):   
+        ):
 
             # Determine which metrics still need computing for this sample.
             to_compute: List[str] =         [m for m in scheduled if i in unscored[m]]
-    
+
             # If nothing to compute for this sample, move on.
             if not to_compute: continue
-    
+
             # Unpack sample & label.
             sample:     Tensor =            dataset.train_data[i][0]
             label:      Any =               dataset.train_data[i][1]
-    
+
             # Compute each outstanding metric for this sample.
             row:        Dict[str, Any] =    {}
-    
+
             # For each metric that needs to be computed...
             for metric_id in to_compute:
 
@@ -133,9 +133,9 @@ def score_dataset_entry_point(
 
                     # Simply warn, for continuity.
                     logger.warning(f"Metric '{metric_id}' failed for sample {i}: {e}")
-    
+
             # Record row.
             scores.record_row(index = i, label = dataset.classes[label], scores = row)
-    
+
     # Provide results to outer process.
     finally: return scores.save()
