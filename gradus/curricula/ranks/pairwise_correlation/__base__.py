@@ -1,4 +1,4 @@
-"""# gradus.curricula.ranks.pairwise_correlation
+"""# gradus.curricula.ranks.pairwise_correlation.base
 
 Pairwise correlation composite ranking implementation.
 """

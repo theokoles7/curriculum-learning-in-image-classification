@@ -1,4 +1,4 @@
-"""# gradus.curricula.ranks.normalized_mean
+"""# gradus.curricula.ranks.normalized_mean.base
 
 Normalized mean composite ranking implementation.
 """

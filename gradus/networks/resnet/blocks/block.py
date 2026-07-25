@@ -1,4 +1,4 @@
-"""# gradus.networks.resnet.block
+"""# gradus.networks.resnet.blocks.block
 
 ResNet (Residual Neural Network) basic block implementation.
 """

@@ -1,4 +1,4 @@
-"""# gradus.networks.resnet.bottleneck
+"""# gradus.networks.resnet.blocks.bottleneck
 
 ResNet (Residual Neural Network) bottleneck block implementation.
 """

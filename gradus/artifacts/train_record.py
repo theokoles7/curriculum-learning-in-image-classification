@@ -1,4 +1,4 @@
-"""# gradus.artifacts.train_results
+"""# gradus.artifacts.train_record
 
 Training results map structure & utility.
 """

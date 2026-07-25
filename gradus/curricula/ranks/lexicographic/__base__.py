@@ -1,4 +1,4 @@
-"""# gradus.curricula.ranks.lexicographic
+"""# gradus.curricula.ranks.lexicographic.base
 
 Lexicographic composite metrics ranking implementation.
 """

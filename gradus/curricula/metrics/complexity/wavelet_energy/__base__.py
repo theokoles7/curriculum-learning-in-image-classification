@@ -1,4 +1,4 @@
-"""# gradus.curricula.metrics.complexity.wavelet_energy
+"""# gradus.curricula.metrics.complexity.wavelet_energy.base
 
 Measurement of wavelet energy of an image.
 """

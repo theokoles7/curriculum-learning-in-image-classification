@@ -1,4 +1,4 @@
-"""# gradus.curricula.metrics.model_informed.saturation_time
+"""# gradus.curricula.metrics.model_informed.saturation_time.base
 
 Measurement of the time required for a model's weights to saturate for an individual image sample.
 """

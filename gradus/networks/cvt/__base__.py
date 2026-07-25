@@ -1,4 +1,4 @@
-"""# gradus.networks.cvt.__base__
+"""# gradus.networks.cvt.base
 
 Shared Convolutional Vision Transformer (CvT) protocol.
 """

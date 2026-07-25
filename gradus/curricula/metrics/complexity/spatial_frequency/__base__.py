@@ -1,4 +1,4 @@
-"""# gradus.curricula.metrics.complexity.spatial_frequency
+"""# gradus.curricula.metrics.complexity.spatial_frequency.base
 
 Measurement of image's spatial frequency.
 """

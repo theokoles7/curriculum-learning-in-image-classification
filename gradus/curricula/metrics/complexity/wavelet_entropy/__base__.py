@@ -1,4 +1,4 @@
-"""# gradus.curricula.metrics.complexity.wavelet_entropy
+"""# gradus.curricula.metrics.complexity.wavelet_entropy.base
 
 Measurement of wavelet entropy of an image.
 """

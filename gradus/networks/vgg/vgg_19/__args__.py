@@ -1,4 +1,4 @@
-"""# gradus.networks.vgg.vgg_19
+"""# gradus.networks.vgg.vgg_19.args
 
 Argument definitions & parsing for 19-layer VGG network.
 """

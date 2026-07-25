@@ -1,4 +1,4 @@
-"""# gradus.datasets.imagenet.__base__
+"""# gradus.datasets.imagenet.base
 
 ImageNet (ILSVRC 2012) dataset implementation.
 """

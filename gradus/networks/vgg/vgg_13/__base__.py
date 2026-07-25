@@ -1,4 +1,4 @@
-"""# gradus.networks.vgg.vgg_13
+"""# gradus.networks.vgg.vgg_13.base
 
 VGG-13 neural network implementation.
 """

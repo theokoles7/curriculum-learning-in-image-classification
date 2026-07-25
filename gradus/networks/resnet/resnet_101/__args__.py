@@ -1,4 +1,4 @@
-"""# gradus.networks.resnet.resnet_101
+"""# gradus.networks.resnet.resnet_101.args
 
 Argument definitions & parsing for 101-layer residual network.
 """

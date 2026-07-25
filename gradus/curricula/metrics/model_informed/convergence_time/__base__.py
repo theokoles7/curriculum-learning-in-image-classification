@@ -1,4 +1,4 @@
-"""# gradus.curricula.metrics.model_informed.convergence_time
+"""# gradus.curricula.metrics.model_informed.convergence_time.base
 
 Measurement of the time required for a model's loss to converge for an individual image sample.
 """

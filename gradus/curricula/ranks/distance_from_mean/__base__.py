@@ -1,4 +1,4 @@
-"""# gradus.curricula.ranks.distance_from_mean
+"""# gradus.curricula.ranks.distance_from_mean.base
 
 Distance from mean ranking implementation.
 """

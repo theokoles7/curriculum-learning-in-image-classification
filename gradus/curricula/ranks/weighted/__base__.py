@@ -1,4 +1,4 @@
-"""# gradus.curricula.ranks.weighted
+"""# gradus.curricula.ranks.weighted.base
 
 Weighted composite metrics ranking implementation.
 """

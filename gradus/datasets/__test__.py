@@ -1,4 +1,4 @@
-"""# gradus.datasets.protocol.test
+"""# gradus.datasets.test
 
 Integration test suite for Dataset train loader curriculum pipeline.
 
