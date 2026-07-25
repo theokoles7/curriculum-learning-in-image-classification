@@ -89,7 +89,7 @@ class Schedule(ABC):
         # Compute ordering.
         order:  List[int] = self._order_(epoch, **metrics)
 
-        # Assert tha at least one batch is being used.
+        # Assert that at least one batch is being used.
         assert len(order) > 0,                                      \
             f"Schedule returned empty batch order at epoch {epoch}"
 

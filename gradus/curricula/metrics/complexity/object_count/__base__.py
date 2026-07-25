@@ -24,7 +24,7 @@ class ObjectCount():
     """# Object Count Measurement"""
 
     def __init__(self,
-        # Sampel
+        # Sample
         sample: Tensor, *,
 
         # Calculation parameters

@@ -1,6 +1,6 @@
 """# gradus.curricula.ranks
 
-Curriculum ranking sheme implementations.
+Curriculum ranking scheme implementations.
 """
 
 __all__ =   [

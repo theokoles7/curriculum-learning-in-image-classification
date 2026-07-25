@@ -30,7 +30,7 @@ class ObjectCountConfig(MetricConfig):
         """# Define Object Count Computation Arguments.
         
         ## Args:
-            * paraser   (ArgumentParser):   Parser to whom arguments will be attributed.
+            * parser    (ArgumentParser):   Parser to whom arguments will be attributed.
         """
         parser.add_argument(
             "--low", "-L",

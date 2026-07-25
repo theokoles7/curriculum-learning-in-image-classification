@@ -32,7 +32,7 @@ class Weighted(Rank):
         ## Args:
             * scores    (DataFrame):        Metric scores sheet.
             * metric    (str | List[str]):  Metric by which sample indices should be anchored. This 
-                                            serves as the anchor metric, upon which Peasron 
+                                            serves as the anchor metric, upon which Pearson 
                                             correlation will be determined for weighting.
             * cache_dir (str | Path):       Path at which ranked indices will be cached for future 
                                             use. Defaults to ".cache/ranks".
