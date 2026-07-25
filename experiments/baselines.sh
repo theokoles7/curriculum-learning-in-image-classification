@@ -19,11 +19,16 @@ for model in resnet-18 resnet-34 resnet-50 resnet-101; do
     # For each dataset...
     for dataset in  mnist cifar-10 cifar-100; do
 
-        # Run true baseline.
-        time gradus train --epochs $EPOCHS $model $dataset
+        # for seed in 1 2 3; do
+        for seed in 2 3; do
 
-        # Run shuffled baseline.
-        time gradus train --epochs $EPOCHS $model $dataset --shuffle
+            # Run true baseline.
+            time gradus train --seed $seed --epochs $EPOCHS $model $dataset
+
+            # Run shuffled baseline.
+            time gradus train --seed $seed --epochs $EPOCHS $model $dataset --shuffle
+
+        done
 
     done
 
