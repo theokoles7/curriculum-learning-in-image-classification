@@ -15,14 +15,15 @@ class TrainingRecord():
     """# Training Data Record Keeping"""
 
     def __init__(self,
-        network_config: Dict[str, Any],
-        dataset_config: Dict[str, Any],
-        epochs:         int,
-        device:         t_device,
-        seed:           int,
-        output_path:    Union[str, Path] =  "results",
-        cache_path:     Union[str, Path] =  ".cache",
-        max_batches:    int =               0
+        network_config:     Dict[str, Any],
+        dataset_config:     Dict[str, Any],
+        epochs:             int,
+        device:             t_device,
+        seed:               int,
+        schedule_config:    Dict[str, Any] =    None,
+        output_path:        Union[str, Path] =  "results",
+        cache_path:         Union[str, Path] =  ".cache",
+        max_batches:        int =               0
     ):
         """# Instantiate Training Record.
 
@@ -47,6 +48,7 @@ class TrainingRecord():
         # Define properties.
         self._network_config_:  Dict[str, Any] =    network_config
         self._dataset_config_:  Dict[str, Any] =    dataset_config
+        self._schedule_config_: Dict[str, Any] =    schedule_config
         self._num_epochs_:      int =               epochs
         self._device_:          t_device =          device
         self._seed_:            int =               seed
@@ -116,6 +118,7 @@ class TrainingRecord():
         return  {
                     "network":      self._network_config_,
                     "dataset":      self._dataset_config_,
+                    "schedule":     self._schedule_config_,
                     "seed":         self._seed_,
                     "device":       str(self._device_),
                     "num_epochs":   self._num_epochs_,
@@ -164,6 +167,7 @@ class TrainingRecord():
         return  md5(dumps({
                     "network":  self._network_config_,
                     "dataset":  self._dataset_config_,
+                    "schedule": self._schedule_config_,
                     "epochs":   self._num_epochs_,
                     "device":   str(self._device_),
                     "seed":     self._seed_

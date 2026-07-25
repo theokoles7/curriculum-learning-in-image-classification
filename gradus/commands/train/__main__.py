@@ -115,6 +115,7 @@ def train_entry_point(
     train_record:   TrainingRecord =    TrainingRecord(
                                             network_config =    network.dict,
                                             dataset_config =    dataset.dict,
+                                            schedule_config =   dataset.schedule.dict if dataset.schedule else None,
                                             epochs =            epochs,
                                             device =            device,
                                             seed =              seed,
