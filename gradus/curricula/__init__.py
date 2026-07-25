@@ -16,6 +16,7 @@ __all__ =   [
                 "ColorVariance",
                 "CompressionRatio",
                 "EdgeDensity",
+                "ObjectCount",
                 "SpatialFrequency",
                 "WaveletEnergy",
                 "WaveletEntropy",
@@ -45,8 +46,10 @@ __all__ =   [
 
                 # Concrete
                 "AdaptiveSchedule",
+                "BanditSchedule",
                 "GradientSchedule",
                 "LinearSchedule",
+                "UncertaintySchedule",
             ]
 
 from gradus.curricula.protocol  import Curriculum
